@@ -1,0 +1,84 @@
+import java.util.*;
+
+/**
+ * ===== Happy Primes ======
+ * Background:
+ * In the 2007 Doctor Who episode "42", a sequence of happy primes (313, 331, 367, 379) is used as a code for unlocking a sealed door on a spaceship 
+ * about to collide with a star. When the Doctor learns that nobody on the spaceship besides himself has heard of happy numbers, he asks, 
+ * "Don't they teach recreational mathematics anymore?"
+ *  
+ * Happy Prime Definition:
+ *    A happy prime is a number that is both 'prime' and 'happy'
+ *  
+ * Happy Number Definition:  
+ *    A 'happy' number is defined by the following process - starting with any positive integer, replace the number by the sum of the squares of its digits, 
+ *    and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+ * 
+ * Happy Number Examples: 
+ * a) 19 is happy
+ *    19    
+ *    1^2 + 9^2 = 82
+ *    8^2 + 2^2 = 68
+ *    6^2 + 8^2 = 100
+ *    1^2 + 0^2 + 0^2 = 1 ===> Happy!!!! :-)
+ *    
+ * b) 4 is not happy (and results in a cycle)
+ *    4
+ *    4^2 = 16
+ *    1^2 + 6^2 = 37
+ *    3^2 + 7^2 = 58 
+ *    5^2 + 8^2 = 89
+ *    8^2 + 9^2 = 145
+ *    1^2 + 4^2 + 5^2 = 42
+ *    4^2 + 2^2 = 20
+ *    2^2 + 0^2 = 4 ===> Cycle!!! Not Happy :-(
+ * 
+ */
+public class IsHappyPrime {
+	public static void main(String[] args){
+		  
+			int input=313;
+			if (isHappy(Integer.toString(input)))
+			System.out.print("Found Happy" + " ");
+			if (isPrime(input))
+				System.out.println("Prime Number");
+			 
+			}
+			private static boolean isPrime(int input){
+				assert(input>0);
+				for (int i = 2; i<= input/2; i++){
+					if(input%i == 0)
+						return false;
+			}
+				return true;
+}
+			private static int sumOfSquares(String s) {
+			if (s.equals("")) return 0;
+			String end = last(s);
+			int n = Integer.parseInt(end);
+			int sq = n*n;
+			int result = sq + sumOfSquares(butLast(s));
+			return result;
+			}
+			 
+			private static String last(String s) {
+			return s.substring(s.length()-1);
+			}
+			 
+			private static String butLast(String s) {
+			return s.substring(0,s.length()-1);
+			}
+			  
+			private static boolean isHappy(String s) {
+			if (sumOfSquares(s)==1) return true;
+			ArrayList list = new ArrayList<Integer>();
+			int n = sumOfSquares(s);
+			 
+			while (!(list.contains(Integer.toString(n))) && (n != 1)) {
+			list.add(Integer.toString(n));
+			n = sumOfSquares(Integer.toString(n));
+			}
+			return (sumOfSquares(Integer.toString(n)) == 1);
+			}
+			  
+}
