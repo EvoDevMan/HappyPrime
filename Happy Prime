@@ -37,7 +37,12 @@ import java.util.*;
 public class IsHappyPrime {
 	public static void main(String[] args){
 		  
-			int input=313;
+			int input;
+			Scanner in = new Scanner(System.in);
+			System.out.println("Is my number a happy prime number?");
+			System.out.println("Please enter a number you would like to check.");
+			input = in.nextInt();
+			
 			if (isHappy(Integer.toString(input)))
 			System.out.print("Found Happy" + " ");
 			if (isPrime(input))
