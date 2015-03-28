@@ -41,9 +41,12 @@ public class IsHappyPrime {
 			if (isHappy(Integer.toString(input)))
 			System.out.print("Found Happy" + " ");
 			if (isPrime(input))
-				System.out.println("Prime Number");
+			System.out.println("Prime Number");
+			
+			if (!isPrime(input) || !isHappy(Integer.toString(input))) 
+			System.out.println("Neither happy nor prime.");
 			 
-			}
+}
 			private static boolean isPrime(int input){
 				assert(input>0);
 				for (int i = 2; i<= input/2; i++){
