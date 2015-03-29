@@ -1,0 +1,28 @@
+import java.util.*;
+public class AngramTester {
+	//Time Complexity O(n*log(n))
+	public static void main (String args[]){
+		String s1;
+		String s2;
+	Scanner in = new Scanner(System.in);
+	System.out.println("Please type first word");
+	s1 = in.nextLine();
+	Scanner in2 = new Scanner(System.in);
+	System.out.println("Please type second word");
+	s2 = in2.nextLine();
+	if(areAnagrams(s1, s2)){
+		System.out.println("These words are Anagrams of one another!");
+	}else{
+	System.out.println("Sorry, no Anagrams here.");
+	}
+	}
+	public static boolean areAnagrams(String s1, String s2){
+	char[] str1 = s1.toUpperCase().replace(" ","").toCharArray(); //After string is set to upper case and spaces removed, the string is broken up to a character array
+	char[] str2 = s2.toUpperCase().replace(" ", "").toCharArray();
+	Arrays.sort(str1); //Time Complexity becomes O(n*log(n))
+	Arrays.sort(str2);
+	String chstr = new String(str1); //optional: A new string is created from the sorted Character Array
+	String chstr2 = new String(str2);
+	return chstr.equals(chstr2);
+}
+}
