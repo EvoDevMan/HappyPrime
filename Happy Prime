@@ -48,7 +48,7 @@ public class IsHappyPrime {
 			if (isPrime(input))
 			System.out.println("Prime Number");
 			
-			if (!isPrime(input) || !isHappy(Integer.toString(input))) 
+			if (!isPrime(input) && !isHappy(Integer.toString(input))) 
 			System.out.println("Neither happy nor prime.");
 			 
 }
